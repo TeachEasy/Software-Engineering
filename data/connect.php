@@ -15,6 +15,6 @@ $connection = new mysqli($servername, $username, $password);
 if($connection->connect_error){
 	die("Connection to the database failed: " . $connection->connect_error);
 } else{
-	echo "<script> window.location.assign('index.php'); </script>";
+	echo "<script> window.location.assign('../calendar.php'); </script>";
 }
 
