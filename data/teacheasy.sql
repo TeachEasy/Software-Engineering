@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2018 at 04:31 PM
+-- Generation Time: Oct 16, 2018 at 03:12 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -168,10 +168,10 @@ CREATE TABLE `subject_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teacher`
+-- Table structure for table `teacaher`
 --
 
-CREATE TABLE `teacher` (
+CREATE TABLE `teacaher` (
   `teacher_id` int(15) NOT NULL,
   `teacher_username` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
@@ -181,13 +181,6 @@ CREATE TABLE `teacher` (
   `school_district` int(15) NOT NULL,
   `school_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `teacher`
---
-
-INSERT INTO `teacher` (`teacher_id`, `teacher_username`, `first_name`, `last_name`, `password`, `grade`, `school_district`, `school_name`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', 'admin', 0, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -275,9 +268,9 @@ ALTER TABLE `subject_types`
   ADD UNIQUE KEY `subject_name` (`subject_name`);
 
 --
--- Indexes for table `teacher`
+-- Indexes for table `teacaher`
 --
-ALTER TABLE `teacher`
+ALTER TABLE `teacaher`
   ADD PRIMARY KEY (`teacher_id`),
   ADD UNIQUE KEY `teacher_username` (`teacher_username`);
 
@@ -346,10 +339,10 @@ ALTER TABLE `subject_types`
   MODIFY `subject_id` int(15) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `teacher`
+-- AUTO_INCREMENT for table `teacaher`
 --
-ALTER TABLE `teacher`
-  MODIFY `teacher_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `teacaher`
+  MODIFY `teacher_id` int(15) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

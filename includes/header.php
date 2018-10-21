@@ -7,19 +7,21 @@
 </head>
 
 <body>
-	<div class="navbar">
-		<div class="col-lg-10" id="navButtonContainer">
-			<button id="navButtons">Calendar</button>
-			<button id="navButtons">Attendance</button>
-			<button id="navButtons">Gradebook</button>
-		</div>
+	<div class="container-fluid">
+		
+		<p id="logoText">Teach Easy</p>
+		<p id="userInfo">User: </p><!--this needs some JS to return the user from a query-->
+		<button id="logoutButton">Log Out</button>
+		
 	</div>
-
-	<div class="container">
-		<!--this does mobile, tablet, pc-->
-		<div class="col-xs-12 col-sm-10 col-lg-8">
-			<h1>This is some filler text</h1>
-		</div>
+	<div class="container-fluid">
+		<hr>
+	  	<nav class="navbar">
+			<button id="navButton">Calendar</button>
+			<button id="navButton">Attendance</button>
+			<button id="navButton">Gradebook</button>
+	  	</nav>
+	  	<hr>
 	</div>
 </body>
 
