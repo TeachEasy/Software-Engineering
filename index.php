@@ -6,11 +6,11 @@
 <body class="loginBackground">
 	<div class="login">
 		<h1>Teach Easy</h1>
-	</div>
-	<h1 id="loginLabel">LOGIN</h1>
+	</div>	
 
 	<div class="container">
 		<div class="loginForm">
+			<h1 id="loginLabel">LOGIN</h1>
 			<form method="post" action="data/connect.php">
 				<!-- this only works if it gets clicked on the right...no idea why-->
 				<input type="text" name="username" placeholder="Username" id="inputs">
