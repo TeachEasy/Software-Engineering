@@ -171,7 +171,7 @@ CREATE TABLE `subject_types` (
 -- Table structure for table `teacaher`
 --
 
-CREATE TABLE `teacher` (
+CREATE TABLE `teacaher` (
   `teacher_id` int(15) NOT NULL,
   `teacher_username` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,

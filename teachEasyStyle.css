@@ -7,15 +7,30 @@
 	font-color: "white";
 }
 
-body{
-	background-color: rgba(0, 204, 255,.5);
-}
-
 h1{
 	color: white;
   	font: 100px chalk;
   	height: 200px;
   	position: absolute;
+}
+
+hr {
+	background-color: black;
+	width: 100%;
+	height: 2px;
+	border: 0; }
+
+.buttonContainer{
+	margin-left: 15%;
+}
+
+.mainContent{
+	width: 100%;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
 }
 
 .loginBackground{
@@ -29,6 +44,7 @@ h1{
 .login{
 	position: relative;
 	width: 400px;
+	height: 20px;
 	border-radius: 50%;
 	transform: rotate(-25deg);
 	margin-top: 3%;
@@ -41,27 +57,22 @@ h1{
 	text-align: center;
 	max-width: 10%;
 }
-
-.navbar{
-	background-image: url("resources/pencil.png");
-	background-repeat: no-repeat;
-	min-height: 140px;
-	margin: 1%;
+/*SOURCE of trsition: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/*/
+.navButton{
+	background-color: rgba(0,0,0,0);
+	font-size: 22px;
+    cursor: pointer;
+    border: none;
+    border-width: 1px;
+    width: auto;
+    height :30px;
+    font-weight: bold;
+    transition: all .2s ease-in-out;
 }
 
-.navbar #navButtonContainer{
-	display: flex;
-	justify-content: space-around;
-	margin-left: 10%;
-	margin-right: auto;
-	margin-top: 2%;
-	align-items: center;
-}
-
-.navbar #navButtons{
-	font-size: 30px;
-	background: none;
-	border: none;
+.navButton:hover{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	transform: scale(1.1);
 }
 
 #inputs{
@@ -75,11 +86,38 @@ h1{
 	width: 200px;
 }
 
-#loginLabel{
+#logoText{
+	display: inline-block;
+	font-size: 45px;
+	font-weight: bold;
+	font: 50px chalk;
+	text-align: left; 
+}
+
+#userInfo{
+	display: inline-block;
 	position: absolute;
-	margin-top: 14%;
-	margin-left: 44%; 
+	text-align: right;
+	font-size: 20px;
+	margin-left: 70%;
+}
+
+#logoutButton{
+	position: absolute;
+	font-size: 20px;
+	margin-left: 65%;
+	margin-top: 40px;
+	width: 200px;
+	background-color: rgba(0,0,0,0);
+	color: red;
+	border: none;
+}
+
+#loginLabel{
+	position: relative;
 	color: white;
   	font: 60px chalk;
-  	height: 200px;
+  	height: 60px;
 }
+
+
