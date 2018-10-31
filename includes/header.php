@@ -15,18 +15,16 @@
 	<div class="container-fluid">
 		<hr>
 	  	<nav class="navbar">
-			<button class="navButton">Calendar</button>
-			<button class="navButton">Attendance</button>
-			<div class="dropdown">
-			  	<button class="navButton" type="button" data-toggle="dropdown">Gradebook
-			  	<span class="caret"></span></button>
-			 	<ul class="dropdown-menu">
-			    	<li><a href="#">English</a></li>
-			    	<li><a href="#">Math</a></li>
-			    	<li><a href="#">Science</a></li>
-			    	<li><a href="#">Social Studies</a></li>
-			  	</ul>
-			</div>
+			<button class="navButton" onclick="window.location.href='calendar.php'">Calendar</button>
+			<button class="navButton" onclick="window.location.href='attendance.php'">Attendance</button>
+
+			<select class="navButton" onchange="location = this.options[this.selectedIndex].value;" style="width: 160px;">
+				<option selected disabled>Grade Book</option>
+				<option value='english.php'>English</option>
+				<option value='math.php'>Math</option>
+				<option value='science.php'>Science</option>
+				<option value='socialstudies.php'>Social Studies</option>
+			</select>			
 	  	</nav>
 	  	<hr>
 	</div>
