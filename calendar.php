@@ -1,3 +1,4 @@
+<?php include 'includes/header.php';?>
 <html>
 	<head>
 		<link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css">
@@ -5,13 +6,8 @@
 		<link rel="stylesheet" href="css/calendar.css">
 	</head>
 	<body>
-	<?php include 'includes/header.php';?>
-
 		<div class="container">
-
-
 		<div class="page-header">
-
 			<div class="pull-right form-inline">
 				<div class="btn-group">
 					<button class="btn btn-primary" data-calendar-nav="prev"><< Prev</button>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+//Check to see if someone is logged in
+if($_SESSION['loggedIn'] != "1"){
+	echo "<script> window.location.assign('index.php'); </script>";
+}
+
+?>
+<br>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +18,8 @@
 <body>
 	<div class="container-fluid">
 		<p id="logoText">Teach Easy</p>
-		<p id="userInfo">User: </p><!--this needs some JS to return the user from a query-->
-		<button id="logoutButton">Log Out</button>
+		<p id="userInfo"><?php echo $_SESSION['userFirstName']; echo " "; echo $_SESSION['userLastName']?></p><!--this needs some JS to return the user from a query-->
+		<button id="logoutButton" onclick="window.location.href='data/logout.php'">Log Out</button>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -24,7 +33,7 @@
 				<option value='math.php'>Math</option>
 				<option value='science.php'>Science</option>
 				<option value='socialstudies.php'>Social Studies</option>
-			</select>			
+			</select>		
 	  	</nav>
 	  	<hr>
 	</div>
