@@ -1,3 +1,25 @@
+<?php
+$db    = new PDO('mysql:host=localhost;dbname=teacheasy;charset=utf8');
+$start = $_REQUEST['date_executed'];
+$end   = $_REQUEST['date_executed'];
+$sql   = sprintf('SELECT * FROM notes' ,
+    $db->quote(date($start)), $db->quote(date($end)));
+
+$out = array();
+foreach($db->query($sql) as $row) {
+    $out[] = array(
+        'note_id' => $row->id,
+        'note_title' => $row->title,
+        'date_executed' => strtotime($row->start) . '000',
+        'date_executed' => strtotime($row->data_executed) .'000'
+    );
+}
+
+echo json_encode(array('success' => 1, 'result' => $out));
+exit;
+
+?>
+<!--  what is orginally in this file
 {
 	"success": 1,
 	"result": [
@@ -74,4 +96,4 @@
 			"end":   "1364407286400"
 		}
 	]
-}
+} -->
