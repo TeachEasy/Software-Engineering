@@ -25,7 +25,7 @@ $connection = new mysqli($servername, $usernameDB, $passwordDB, $nameDB);
 //Check if the connection was successful
 if($connection->connect_error){
 	die("Connection to the database failed: " . $connection->connect_error);
-} else{
+} else {
 	//once the DB is connected, get information from the DB to check the records against the data entered
 	$sqlUser = "SELECT `teacher_username` FROM `teacher` WHERE `teacher_username`= '{$_SESSION['user']}'";
 	$sqlPass = "SELECT `password` FROM `teacher` WHERE `password`='$pass'";
@@ -41,10 +41,15 @@ if($connection->connect_error){
 		//get first name and last name to populate the user
 		$sqlUserFirstName = "SELECT `first_name` FROM `teacher` WHERE `teacher_username`='{$_SESSION['user']}'";
 		$sqlUserLastName = "SELECT `last_name` FROM `teacher` WHERE `teacher_username`='{$_SESSION['user']}'";
+		$sqlUserId = "SELECT `teacher_id` FROM `teacher` WHERE `teacher_username`='{$_SESSION['user']}'";
+
 		$resultUserFirstName = mysqli_query($connection, $sqlUserFirstName);
 		$resultUserLastName = mysqli_query($connection, $sqlUserLastName);
+		$resultUserId = mysqli_query($connection, $sqlUserId);
+
 		$_SESSION['userFirstName'] = $resultUserFirstName->fetch_assoc()['first_name'];
 		$_SESSION['userLastName'] = $resultUserLastName->fetch_assoc()['last_name'];
+		$_SESSION['userId'] = $resultUserId->fetch_assoc()['teacher_id'];
 
 		//set session log in to 1 if the log in was sucessful
 		$_SESSION['loggedIn'] = "1";
