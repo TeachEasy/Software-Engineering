@@ -23,8 +23,6 @@ hr{
 
 table{
 	border: none;
-	display: flex;
-	justify-content: center;
 }
 
 td{
