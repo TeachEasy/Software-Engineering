@@ -31,6 +31,13 @@ td{
 	text-align: left;
 }
 
+body{
+	background-color: green;
+}
+.colorNav{
+	background-color: red;
+}
+
 .buttonContainer{
 	margin-left: 15%;
 }
