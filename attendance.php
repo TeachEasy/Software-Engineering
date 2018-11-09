@@ -26,8 +26,7 @@
 			<td><b>Total Absent</b></td>
 			<td><b>Dates Absent</b></td>
 		</tr>";
-	$result = mysqli_query($connection, $sql);
-	$row = mysqli_fetch_assoc($result);
+
 	while($row = mysqli_fetch_assoc($result)){
 		echo"<tr><td>{$row['StudentName']}</td><td>{$row['TotalAbsent']}</td><td>{$row['DatesAbsent']}</td></tr>";
 	}
