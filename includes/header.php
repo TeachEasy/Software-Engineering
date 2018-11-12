@@ -16,6 +16,7 @@ if($_SESSION['loggedIn'] != "1"){
 </head>
 
 <body>
+	<div class="colorNav">
 	<div class="container-fluid">
 		<p id="logoText">Teach Easy</p>
 		<p id="userInfo"><?php echo $_SESSION['userFirstName']; echo " "; echo $_SESSION['userLastName']?></p><!--this needs some JS to return the user from a query-->
@@ -36,6 +37,7 @@ if($_SESSION['loggedIn'] != "1"){
 			</select>		
 	  	</nav>
 	  	<hr>
+	</div>
 	</div>
 </body>
 
