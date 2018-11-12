@@ -227,7 +227,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: rgba(236,236,236);
 }
 
 a {
@@ -893,11 +893,12 @@ dd {
   margin-left: 180px;
 }
 
+/*Controls the hr in the header.php file on the home page only*/
 hr {
-  margin: 20px 0;
   border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff;
+  background-color:rgb(144,182,68);
+  height:5px;
+  border-radius:5px;
 }
 
 abbr[title],
@@ -3357,6 +3358,7 @@ input[type="button"].btn-block {
   color: rgba(255, 255, 255, 0.75);
 }
 
+/*Prev Today Next Buttons*/
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -3390,6 +3392,8 @@ input[type="button"].btn-block {
   background-color: #003399 \9;
 }
 
+
+/*Year Month Week Day Buttons*/
 .btn-warning {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
