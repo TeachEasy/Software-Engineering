@@ -30,8 +30,25 @@
 	while($row = mysqli_fetch_assoc($result)){
 		echo"<tr><td>{$row['StudentName']}</td><td>{$row['TotalAbsent']}</td><td>{$row['DatesAbsent']}</td></tr>";
 	}
+	
+	
+    $sqlListStudents = "SELECT CONCAT(last_name,', ',first_name) AS 'StudentName' FROM `students` WHERE teacher_id='" . $_SESSION['userId'] . "' ORDER BY last_name ASC;";
+    $resultListStudents = mysqli_query($connection, $sqlListStudents) or die("Bad Query: $sqlListStudents"); 
+    echo "<form method='post'>";
+	echo"<table>";
+	echo"<tr>
+			<td><b>Mark Today's Absesences Only</b></td>
+	     </tr>";
+	$nameCount = 0;
+	while($row = mysqli_fetch_assoc($resultListStudents)){
+		echo"<tr><td><input type='checkbox' name='student". $nameCount ."'>{$row['StudentName']}</td></tr>";
+		$nameCount++;
+	}
+	echo "</table>";
+	echo "<button type='submit' name='submitAbsences'>Submit Absences</button>";
+	echo "</form>";
 
-	?>
-
+    ?>
+    
 	</body>
 </html>
