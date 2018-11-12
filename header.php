@@ -1,3 +1,12 @@
+<?php
+session_start();
+//Check to see if someone is logged in
+if($_SESSION['loggedIn'] != "1"){
+	echo "<script> window.location.assign('index.php'); </script>";
+}
+
+?>
+<br>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,29 +16,28 @@
 </head>
 
 <body>
+	<div class="colorNav">
 	<div class="container-fluid">
-		
 		<p id="logoText">Teach Easy</p>
-		<p id="userInfo">User: </p><!--this needs some JS to return the user from a query-->
-		<button id="logoutButton">Log Out</button>
-		
+		<p id="userInfo"><?php echo $_SESSION['userFirstName']; echo " "; echo $_SESSION['userLastName']?></p><!--this needs some JS to return the user from a query-->
+		<button id="logoutButton" onclick="window.location.href='data/logout.php'">Log Out</button>
 	</div>
 	<div class="container-fluid">
 		<hr>
 	  	<nav class="navbar">
-			<button id="navButton">Calendar</button>
-			<button id="navButton">Attendance</button>
-			<div class="dropdown">
-			<button class="btn dropdown-toggle" id="navButton" data-toggle="dropdown">Gradebook<span class="caret"></span></button>
-			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				  	<li><a class="dropdown-item" href="#">English</a></li>
-				  	<li><a class="dropdown-item" href="#">Math</a></li>
-				    <li><a class="dropdown-item" href="#">Science</a></li>
-				    <li><a class="dropdown-item" href="#">Social Studies</a></li>
-			  	</ul>
-			</div>
+			<button class="navButton" onclick="window.location.href='calendar.php'">Calendar</button>
+			<button class="navButton" onclick="window.location.href='attendance.php'">Attendance</button>
+
+			<select class="navButton" onchange="location = this.options[this.selectedIndex].value;" style="width: 160px;">
+				<option selected disabled>Grade Book</option>
+				<option value='english.php'>English</option>
+				<option value='math.php'>Math</option>
+				<option value='science.php'>Science</option>
+				<option value='socialstudies.php'>Social Studies</option>
+			</select>		
 	  	</nav>
 	  	<hr>
+	</div>
 	</div>
 </body>
 
