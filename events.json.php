@@ -1,99 +1,165 @@
-<?php
-$db    = new PDO('mysql:host=localhost;dbname=teacheasy;charset=utf8');
-$start = $_REQUEST['date_executed'];
-$end   = $_REQUEST['date_executed'];
-$sql   = sprintf('SELECT * FROM notes' ,
-    $db->quote(date($start)), $db->quote(date($end)));
-
-$out = array();
-foreach($db->query($sql) as $row) {
-    $out[] = array(
-        'note_id' => $row->id,
-        'note_title' => $row->title,
-        'date_executed' => strtotime($row->start) . '000',
-        'date_executed' => strtotime($row->data_executed) .'000'
-    );
-}
-
-echo json_encode(array('success' => 1, 'result' => $out));
-exit;
-
-?>
-<!--  what is orginally in this file
 {
 	"success": 1,
 	"result": [
 		{
-			"id": "293",
-			"title": "This is warning class event with very long title to check how it fits to evet in day view",
-			"url": "http://www.example.com/",
-			"class": "event-warning",
-			"start": "1362938400000",
-			"end":   "1363197686300"
+			"id": "1",
+			"title": "Geometry",
+			"class": "event-warning", 
+			"url": "http://www.facebook.com/", 
+			"start": "1541073600000",
+			"end":   "1541095200000"
 		},
 		{
-			"id": "256",
-			"title": "Event that ends on timeline",
-			"url": "http://www.example.com/",
+			"id": "2",
+			"title": "Time",
+			"url": "http://www.facebook.com/",
 			"class": "event-warning",
-			"start": "1363155300000",
-			"end":   "1363227600000"
+			"start": "1541160000000",
+			"end":   "1541181600000"
 		},
 		{
-			"id": "276",
-			"title": "Short day event",
-			"url": "http://www.example.com/",
+			"id": "3",
+			"title": "Length",
+			"url": "http://eelslap.com/",
 			"class": "event-success",
-			"start": "1363245600000",
-			"end":   "1363252200000"
+			"start": "1541422800000",
+			"end":   "1541444400000"
 		},
 		{
-			"id": "294",
-			"title": "This is information class ",
-			"url": "http://www.example.com/",
+			"id": "4",
+			"title": "Comparing Numbers",
+			"url": "http://eelslap.com/",
 			"class": "event-info",
-			"start": "1363111200000",
-			"end":   "1363284086400"
+			"start": "1541509200000",
+			"end":   "1541530800000"
 		},
 		{
-			"id": "297",
-			"title": "This is success event",
-			"url": "http://www.example.com/",
+			"id": "5",
+			"title": "Equality",
+			"url": "http://eelslap.com/",
 			"class": "event-success",
-			"start": "1363234500000",
-			"end":   "1363284062400"
+			"start": "1541595600000",
+			"end":   "1541617200000"
 		},
 		{
-			"id": "54",
-			"title": "This is simple event",
-			"url": "http://www.example.com/",
+			"id": "6",
+			"title": "Letters",
+			"url": "http://eelslap.com/",
 			"class": "",
-			"start": "1363712400000",
-			"end":   "1363716086400"
+			"start": "1541682000000",
+			"end":   "1541703600000"
 		},
 		{
-			"id": "532",
-			"title": "This is inverse event",
-			"url": "http://www.example.com/",
+			"id": "7",
+			"title": "Reading",
+			"url": "http://eelslap.com/",
 			"class": "event-inverse",
-			"start": "1364407200000",
-			"end":   "1364493686400"
+			"start": "1541768400000",
+			"end":   "1541790000000"
 		},
 		{
-			"id": "548",
-			"title": "This is special event",
-			"url": "http://www.example.com/",
+			"id": "8",
+			"title": "Writing",
+			"url": "http://eelslap.com/",
 			"class": "event-special",
-			"start": "1363197600000",
-			"end":   "1363629686400"
+			"start": "1542027600000",
+			"end":   "1542049200000"
 		},
 		{
-			"id": "295",
-			"title": "Event 3",
-			"url": "http://www.example.com/",
+			"id": "9",
+			"title": "Group Discussions",
+			"url": "http://eelslap.com/",
 			"class": "event-important",
-			"start": "1364320800000",
-			"end":   "1364407286400"
+			"start": "1542114000000",
+			"end":   "1542135600000"
+		},
+		{
+			"id": "10",
+			"title": "Grammar",
+			"class": "event-warning", 
+			"url": "http://eelslap.com/", 
+			"start": "1542200400000",
+			"end":   "1542222000000"
+		},
+		{
+			"id": "11",
+			"title": "Sounds",
+			"url": "http://www.facebook.com/",
+			"class": "event-warning",
+			"start": "1542286800000",
+			"end":   "1542308400000"
+		},
+		{
+			"id": "12",
+			"title": "Parents and Children",
+			"url": "http://eelslap.com/",
+			"class": "event-success",
+			"start": "1542373200000",
+			"end":   "1542394800000"
+		},
+		{
+			"id": "13",
+			"title": "Sun, Moon and Stars",
+			"url": "http://eelslap.com/",
+			"class": "event-info",
+			"start": "1542632400000",
+			"end":   "1542654000000"
+		},
+		{
+			"id": "14",
+			"title": "Daylight",
+			"url": "http://eelslap.com/",
+			"class": "event-success",
+			"start": "1542718800000",
+			"end":   "1542740400000"
+		},
+		{
+			"id": "15",
+			"title": "Light and Sound",
+			"url": "http://eelslap.com/",
+			"class": "",
+			"start": "1543237200000",
+			"end":   "1543258800000"
+		},
+		{
+			"id": "16",
+			"title": "Leadership",
+			"url": "http://eelslap.com/",
+			"class": "event-inverse",
+			"start": "1543323600000",
+			"end":   "1543345200000"
+		},
+		{
+			"id": "17",
+			"title": "Exchanging Goods",
+			"url": "http://eelslap.com/",
+			"class": "event-special",
+			"start": "1543410000000",
+			"end":   "1543431600000"
+		},
+		{
+			"id": "18",
+			"title": "Seasons",
+			"url": "http://eelslap.com/",
+			"class": "event-important",
+			"start": "1543496400000",
+			"end":   "1543518000000"
+		},
+		{
+			"id": "19",
+			"title": "Community History",
+			"url": "http://eelslap.com/",
+			"class": "event-success",
+			"start": "1543582800000",
+			"end":   "1543604400000"
+		},
+		{
+			"id": "20",
+			"title": "WV Occupations",
+			"url": "http://eelslap.com/",
+			"class": "event-info",
+			"start": "1543842000000",
+			"end":   "1543863600000"
 		}
 	]
-} -->
+}
