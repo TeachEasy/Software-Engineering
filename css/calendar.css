@@ -387,6 +387,8 @@
 .cal-row-head [class*="cal-cell"] small {
   font-weight: normal;
 }
+
+/*Top of calendar, where days of the week are listed, color changes when user hovers*/
 .cal-year-box .row-fluid:hover,
 .cal-row-fluid:hover {
   background-color: #fafafa;
@@ -394,13 +396,17 @@
 .cal-month-day {
   height: 100px;
 }
+
+/*Hover color for days of the week contained in the calendar*/
 [class*="cal-cell"]:hover {
-  background-color: #ededed;
+  background-color: rgba(144,182,68,0.8);
 }
+
+/*Horizontal lines in the calendar*/
 .cal-year-box [class*="span"],
 .cal-month-box [class*="cal-cell"] {
   min-height: 100px;
-  border-right: 1px solid #e1e1e1;
+  border-right:2px solid rgb(47,67,94);
   position: relative;
 }
 .cal-year-box [class*="span"] {
@@ -410,9 +416,12 @@
 .cal-month-box .cal-row-fluid [class*="cal-cell"]:last-child {
   border-right: 0px;
 }
+
+/*Vertical lines in the calendar*/
 .cal-year-box .row-fluid,
 .cal-month-box .cal-row-fluid {
-  border-bottom: 1px solid #e1e1e1;
+  background-color:white;
+  border-bottom: 2px solid rgb(47,67,94);
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -420,13 +429,15 @@
 .cal-month-box .cal-row-fluid:last-child {
   border-bottom: 0px;
 }
+
+/*Border around the calendar*/
 .cal-month-box,
 .cal-year-box,
 .cal-week-box {
-  border-top: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
-  border-right: 1px solid #e1e1e1;
-  border-left: 1px solid #e1e1e1;
+  border-top: 2px solid rgb(47,67,94);
+  border-bottom: 2px solid rgb(47,67,94);
+  border-right: 2px solid rgb(47,67,94);
+  border-left: 2px solid rgb(47,67,94);
   border-radius: 2px;
 }
 span[data-cal-date] {
@@ -450,7 +461,7 @@ span[data-cal-date]:hover {
   cursor: default;
 }
 .cal-day-today {
-  background-color: #e8fde7;
+  background-color: rgba(47,67,94,0.3);
 }
 .cal-day-today span[data-cal-date] {
   color: darkgreen;
