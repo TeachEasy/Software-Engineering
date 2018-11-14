@@ -21,32 +21,36 @@
 		}
 		echo "</tr>";
 
-		//this fills the table with the student information and grades
-		$sql = "SELECT CONCAT(s.last_name, ', ',s.first_name) AS 'Student Name',g.grade FROM `grades` g JOIN assignments a ON a.assignment_id=g.assignment_id JOIN teacher t ON t.teacher_id=a.teacher_id JOIN students s ON s.student_id=g.student_id WHERE a.teacher_id='" . $_SESSION['userId'] . "' AND a.subject_id='3' ORDER BY s.last_name ASC";
-		$sqlCount = "SELECT COUNT(assignment_name) FROM `assignments` WHERE subject_id = '3' AND teacher_id= '" . $_SESSION['userId'] . "';";
+		//this fills the table with grades
+		$sql = "SELECT CONCAT(s.last_name, ', ',s.first_name) AS 'Student Name',g.grade 
+        FROM `grades` g 
+            JOIN assignments a ON a.assignment_id=g.assignment_id 
+            JOIN teacher t ON t.teacher_id=a.teacher_id 
+            JOIN students s ON s.student_id=g.student_id 
+        WHERE a.teacher_id='" . $_SESSION['userId'] . "' 
+        AND a.subject_id='1' 
+        ORDER BY s.last_name,s.first_name ASC";
 
 		$result = mysqli_query($connection, $sql); 
 
-		//gets the number of assignments so it can display the table
-		$resultCount = mysqli_query($connection, $sqlCount);
-		$countNum = mysqli_fetch_assoc($resultCount);
-		$counter = 0;
+		$last_stud = null;
 
-		//this loops through the data and outputs it to the table
-		echo "<tr>";
 		while($row2 = mysqli_fetch_assoc($result)){
-			if($counter == 0){
-				echo"<td>{$row2['Student Name']}</td>";
-				$counter++;
-			} else if($counter <= $countNum['COUNT(assignment_name)']){
-				echo"<td>{$row2['grade']}</td>";
-				$counter++;
-			} else{	
-				$counter = 0;
-				echo"</tr>";
-			}
+		    if($last_stud != $row2['Student Name']){
+
+		        // close previous <tr>
+		        if ( $last_stud !== null ) {
+		            echo '</tr>';
+		        }
+
+		        $last_stud = $row2['Student Name'];
+		        echo"<tr><td>{$row2['Student Name']}</td>";
+		        echo"<td>{$row2['grade']}</td>";
+		    } else {
+		        echo"<td>{$row2['grade']}</td>";
+		    }
 		}
-		echo "</table>";
+		echo '</tr>';
 	?>
 	</body>
 </html>
