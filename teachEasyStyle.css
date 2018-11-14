@@ -24,6 +24,9 @@ hr{
 table{
 	border: none;
 }
+tr{
+	border-bottom: 1px solid;
+}
 
 td{
 	padding-left: 15px;
