@@ -34,6 +34,15 @@ td{
 	text-align: left;
 }
 
+.leftColumn{
+	float: left;
+	text-align: right;
+}
+
+.rightColumn{
+
+}
+
 .buttonContainer{
 	margin-left: 15%;
 }
