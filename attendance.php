@@ -7,6 +7,7 @@
 
 
 	//THE RECORDS CAN BE DELETED, THE ISSETS DO NOT WORK, I DONT KNOW WHY
+	//LINES 85-107
 
 
 
@@ -45,12 +46,17 @@
 
 
 
-<!--ADD CSS TO MAKE THIS BUTTON MATCH THE FORMATTING -->
+	<!--ADD CSS TO MAKE THESE BUTTONS MATCH THE FORMATTING -->
     <button class="navButton" onclick="window.location.href='absences.php'">Take Attendance</button>
     <!-- Trigger the modal with a button -->
 	<button type="button" class="navButton" data-toggle="modal" data-target="#myModal">Remove Absence</button>
+	<button type="button" class="navButton" data-toggle="modal" data-target="#singleAddModal">Add Single Past Absence</button>
 
-	<!-- Modal -->
+
+
+
+
+	<!-- Modal for remove an absence -->
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
@@ -82,7 +88,6 @@
 	        <button type="button" class="navButton" data-dismiss="modal">Close</button>
 	      </div>
 	      <?php 
-	      	var_dump($_POST);
 			if (isset($_POST['submitRemoveButton'])){
 				$studentID = $_POST["studentidRemoveAbs"];
 				$year = $_POST["yearRemove"];
@@ -126,6 +131,83 @@
 	      ?>
 	    </div>
 	  </div>
+	</div>
+
+	<!--MODAL FOR ADDING A SINGLE PAST ABSENCE-->
+	<div id="singleAddModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		        	<h4 class="modal-title">Add Past Absence</h4>
+		      	</div>
+		      	<div class="modal-body">
+			        <form id="insert_form" method="post">
+			        	<section class="container-fluid">
+				      		<div class="leftColumn">
+				      			<label>Student ID: </label><br>
+				      			<label>Date: </label>
+				      		</div>
+				      		<div class="rightColumn">
+				        		<input type="text" name="studentidAdd" placeholder="Student ID"><br>
+				        		<input type="text" name="yearAdd" placeholder="Year" value="2018" style="width: 60px;">
+				        		<input type="text" name="monthAdd" placeholder="Month" style="width: 60px;">
+				        		<input type="text" name="dayAdd" placeholder="Day" style="width: 60px;">
+				      		</div>
+				      	</section>
+				      	<input type="submit" name='submitAddButton' class='navButton' value='Add Absence' id="submitAddButton">
+			        </form>	     
+		      	</div>
+			    <div class="modal-footer">
+			    	<button type="button" class="navButton" data-dismiss="modal">Close</button>
+			    </div>
+		    </div>
+		</div>
+		<?php
+			if (isset($_POST['submitAddButton'])){
+				$studentIDadd = $_POST["studentidAdd"];
+				$yearAdd = $_POST["yearAdd"];
+				$monthAdd = $_POST["monthAdd"];
+				$dayAdd = $_POST["dayAdd"];
+				$dateAdd = $year."-".$month."-".$day;
+
+				//this chain of if statements is broken. IDK why
+				if(!isset($studentIDadd)){
+					echo "<script>alert('Student ID not set')</script>";
+					
+				} else if(!isset($yearAdd)){
+					echo "<script>alert('Year not set')</script>";
+					
+				} else if(!isset($monthAdd)){
+					echo "<script>alert('Month not set')</script>";
+					
+				} else if(!isset($dayAdd)){
+					echo "<script>alert('Day not set')</script>";
+					
+				} else if(isset($studentIDadd) && isset($yearAdd) && isset($monthAdd) && isset($dayAdd)){
+					
+					$query = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$studentIDadd."','".$dateAdd."');";
+					$result = mysqli_query($connection, $query);
+  
+					if($connection === false){ 
+					    die("ERROR: Could not connect. " . mysqli_connect_error()); 
+					} 
+					  
+					if(mysqli_query($connection, $query)){ 
+					    echo "<script type=\"text/javascript\">alert('Success, the record was added');</script>";
+						echo "<script> window.location.assign('attendance.php'); </script>"; 
+					}  
+					else{ 
+					    echo "<script>alert('The record already exist, or was entered improperly. Only enter numbers in the boxes.');</script>";
+					} 
+					mysqli_close($connection); 
+
+				}
+				
+			}
+
+		?>
 	</div>
 	</body>
 </html>
