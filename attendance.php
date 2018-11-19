@@ -3,15 +3,6 @@
 	<body>
 	<?php 
 	//WE SHOULD REALLY BE USING PREPARED STATEMENTS FOR THIS FOR SECURITY, BUT FOR TESTING PURPOSES THIS IS OKAY
-
-
-
-	//THE RECORDS CAN BE DELETED, THE ISSETS DO NOT WORK, I DONT KNOW WHY
-	//LINES 85-107
-
-
-
-
 	
 	//set up the database 
 	$servername = "localhost";
@@ -96,16 +87,16 @@
 				$date = $year."-".$month."-".$day;
 
 				//this chain of if statements is broken in the isset. IDK why
-				if(!isset($studentID)){
+				if(empty($studentID)){
 					echo "<script>alert('Student ID not set')</script>";
 					
-				} else if(!isset($year)){
+				} else if(empty($year)){
 					echo "<script>alert('Year not set')</script>";
 					
-				} else if(!isset($month)){
+				} else if(empty($month)){
 					echo "<script>alert('Month not set')</script>";
 					
-				} else if(!isset($day)){
+				} else if(empty($day)){
 					echo "<script>alert('Day not set')</script>";
 					
 				} else if(isset($studentID) && isset($year) && isset($month) && isset($day)){
@@ -168,16 +159,16 @@
 						$dateAdd = $yearAdd."-".$monthAdd."-".$dayAdd;
 
 						//this chain of if statements is broken. IDK why
-						if(!isset($_POST["studentidAdd"])){
+						if(empty($_POST["studentidAdd"])){
 							echo "<script>alert('Student ID not set')</script>";
 							
-						} else if(!isset($_POST["yearAdd"])){
+						} else if(empty($_POST["yearAdd"])){
 							echo "<script>alert('Year not set')</script>";
 							
-						} else if(!isset($_POST["monthAdd"])){
+						} else if(empty($_POST["monthAdd"])){
 							echo "<script>alert('Month not set')</script>";
 							
-						} else if(!isset($_POST["dayAdd"])){
+						} else if(empty($_POST["dayAdd"])){
 							echo "<script>alert('Day not set')</script>";	
 
 						} else if(isset($studentIDadd) && isset($yearAdd) && isset($monthAdd) && isset($dayAdd)){
