@@ -5,7 +5,7 @@
 			"id": "1",
 			"title": "Geometry",
 			"class": "event-warning", 
-			"url": "http://www.facebook.com/", 
+			"url": "lessonPlans.php", 
 			"start": "1541073600000",
 			"end":   "1541095200000"
 		},
