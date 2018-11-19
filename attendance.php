@@ -41,7 +41,7 @@
 	while($row = mysqli_fetch_assoc($result)){
 		echo"<tr><td>{$row['student_id']}</td><td>{$row['StudentName']}</td><td>{$row['TotalAbsent']}</td><td>{$row['DatesAbsent']}</td></tr>";
 	}
-
+ 
     ?>
 
 
@@ -95,8 +95,7 @@
 				$day = $_POST["dayRemove"];
 				$date = $year."-".$month."-".$day;
 
-
-				//this chain of if statements is broken. IDK why
+				//this chain of if statements is broken in the isset. IDK why
 				if(!isset($studentID)){
 					echo "<script>alert('Student ID not set')</script>";
 					
@@ -110,23 +109,21 @@
 					echo "<script>alert('Day not set')</script>";
 					
 				} else if(isset($studentID) && isset($year) && isset($month) && isset($day)){
-					
 					$query = "DELETE FROM `absences` WHERE student_id='". $studentID ."' AND date_absence = '". $date."';";
-					$result = mysqli_query($connection, $query);
   
 					if($connection === false){ 
 					    die("ERROR: Could not connect. " . mysqli_connect_error()); 
 					} 
 					  
 					if(mysqli_query($connection, $query)){ 
-					    echo "<script type=\"text/javascript\">alert('Success, the record was deleted');</script>";
+					    echo "<script>alert('Success, the record was deleted');</script>";
 						echo "<script> window.location.assign('attendance.php'); </script>"; 
 					}  
 					else{ 
 					    echo "<script>alert('No record was found.');</script>";
 					} 
-					mysqli_close($connection); 
-				}
+					
+				} 
 			}			
 	      ?>
 	    </div>
@@ -143,7 +140,7 @@
 		        	<h4 class="modal-title">Add Past Absence</h4>
 		      	</div>
 		      	<div class="modal-body">
-			        <form id="insert_form" method="post">
+			        <form id="insert_formAdd" method="post">
 			        	<section class="container-fluid">
 				      		<div class="leftColumn">
 				      			<label>Student ID: </label><br>
@@ -162,52 +159,48 @@
 			    <div class="modal-footer">
 			    	<button type="button" class="navButton" data-dismiss="modal">Close</button>
 			    </div>
+			    <?php
+					if (isset($_POST['submitAddButton'])){
+						$studentIDadd = $_POST["studentidAdd"];
+						$yearAdd = $_POST["yearAdd"];
+						$monthAdd = $_POST["monthAdd"];
+						$dayAdd = $_POST["dayAdd"];
+						$dateAdd = $yearAdd."-".$monthAdd."-".$dayAdd;
+
+						//this chain of if statements is broken. IDK why
+						if(!isset($_POST["studentidAdd"])){
+							echo "<script>alert('Student ID not set')</script>";
+							
+						} else if(!isset($_POST["yearAdd"])){
+							echo "<script>alert('Year not set')</script>";
+							
+						} else if(!isset($_POST["monthAdd"])){
+							echo "<script>alert('Month not set')</script>";
+							
+						} else if(!isset($_POST["dayAdd"])){
+							echo "<script>alert('Day not set')</script>";	
+
+						} else if(isset($studentIDadd) && isset($yearAdd) && isset($monthAdd) && isset($dayAdd)){
+							$queryCheck = "SELECT student_id, date_absence FROM `absences` WHERE student_id='". $studentIDadd."' AND date_absence='".$dateAdd."'";
+							$queryAdd = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$studentIDadd."','".$dateAdd."');";
+							$runCheck = mysqli_query($connection, $queryCheck);
+							if(mysqli_num_rows($runCheck) ==0 ){
+								if(mysqli_query($connection, $queryAdd)){ 
+								    echo "<script>alert('Success, the record was added');</script>";
+									echo "<script>window.location.assign('attendance.php'); </script>"; 
+								}  
+								else{ 
+								    echo "<script>alert('The record already exists, or was entered improperly. Only enter numbers in the boxes.');</script>";
+								}
+							} else{
+								echo "<script>alert('The record already exists.');</script>";
+							}
+							mysqli_close($connection);
+						}	
+					}
+				?>
 		    </div>
-		</div>
-		<?php
-			if (isset($_POST['submitAddButton'])){
-				$studentIDadd = $_POST["studentidAdd"];
-				$yearAdd = $_POST["yearAdd"];
-				$monthAdd = $_POST["monthAdd"];
-				$dayAdd = $_POST["dayAdd"];
-				$dateAdd = $year."-".$month."-".$day;
-
-				//this chain of if statements is broken. IDK why
-				if(!isset($studentIDadd)){
-					echo "<script>alert('Student ID not set')</script>";
-					
-				} else if(!isset($yearAdd)){
-					echo "<script>alert('Year not set')</script>";
-					
-				} else if(!isset($monthAdd)){
-					echo "<script>alert('Month not set')</script>";
-					
-				} else if(!isset($dayAdd)){
-					echo "<script>alert('Day not set')</script>";
-					
-				} else if(isset($studentIDadd) && isset($yearAdd) && isset($monthAdd) && isset($dayAdd)){
-					
-					$query = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$studentIDadd."','".$dateAdd."');";
-					$result = mysqli_query($connection, $query);
-  
-					if($connection === false){ 
-					    die("ERROR: Could not connect. " . mysqli_connect_error()); 
-					} 
-					  
-					if(mysqli_query($connection, $query)){ 
-					    echo "<script type=\"text/javascript\">alert('Success, the record was added');</script>";
-						echo "<script> window.location.assign('attendance.php'); </script>"; 
-					}  
-					else{ 
-					    echo "<script>alert('The record already exist, or was entered improperly. Only enter numbers in the boxes.');</script>";
-					} 
-					mysqli_close($connection); 
-
-				}
-				
-			}
-
-		?>
+		</div>		
 	</div>
 	</body>
 </html>
