@@ -37,19 +37,9 @@
 				<div id="calendar"></div>
 			</div>
 			<div class="span3">
-				<div class="row-fluid">
-					<select id="first_day" class="span12">
-						<option value="2">First day of week is Sunday</option>
-						<option value="1">First day of week is Monday</option>
-					</select>
-					
-					
-					
-					
-				</div>
+				
 
-				<h4>Events</h4>
-				<ul id="eventlist" class="nav nav-list"></ul>
+				
 			</div>
 		</div>
 
