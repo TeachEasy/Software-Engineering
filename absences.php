@@ -8,13 +8,17 @@
 	//connect to the database
 	$connection = new mysqli($servername, $usernameDB, $passwordDB, $nameDB);
 
-
+	$todayYear = date("Y");
+	$todayMonth = date("m");
+	$todayDay = date("d");
     $sqlListStudents = "SELECT CONCAT(last_name,', ',first_name) AS 'StudentName',student_id FROM `students` WHERE teacher_id='" . $_SESSION['userId'] . "' ORDER BY last_name ASC;";
     $resultListStudents = mysqli_query($connection, $sqlListStudents) or die("Bad Query: $sqlListStudents"); 
-    echo "<form method='get'>";
+    echo "<form method='post'>";
 	echo"<table>";
 	echo"<tr>
-			<td><b>Mark Today's Absesences Only</b></td>
+			<td><b>Date: <input type='text' name='yearTakeAttendance' placeholder='Year' value='".$todayYear."' style='width: 60px;'>
+		        		<input type='text' name='monthTakeAttendance' placeholder='Month' value='".$todayMonth."' style='width: 60px;'>
+		        		<input type='text' name='dayTakeAttendance' placeholder='Day' value='".$todayDay."' style='width: 60px;'></b></td>
 	     </tr>";
 	$nameCount = 0;
 	while($row = mysqli_fetch_assoc($resultListStudents)){
@@ -26,16 +30,20 @@
 	echo "</table>";
 	echo "<button type='submit' name='submitAbsences' class='navButton'>Submit Absences</button>";
 	echo "</form>";
-	$today = date("Y/m/d");
 
-	if(isset($_GET['submitAbsences'])){
-		$name = $_GET['students'];
+	if(isset($_POST['submitAbsences'])){
+		$name = $_POST['students'];
+		if(isset($_POST['yearTakeAttendance']) && isset($_POST['monthTakeAttendance']) && isset($_POST['dayTakeAttendance'])){
+			$todaysDate = $_POST['yearTakeAttendance']."-".$_POST['monthTakeAttendance']."-".$_POST['dayTakeAttendance'];
+		} else{
+			echo "<script>alert('Enter a date to take attendance')</script>";
+		}
 
 		foreach ($name as $students) {
-			$queryAdd = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$students."','".$today."');";
-			$queryCheck = "SELECT student_id, date_absence FROM `absences` WHERE student_id='". $students."' AND date_absence='".$today."'";
+			$queryAdd = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$students."','".$todaysDate."');";
+			$queryCheck = "SELECT student_id, date_absence FROM `absences` WHERE student_id='". $students."' AND date_absence='".$todaysDate."'";
 			$runCheck = mysqli_query($connection, $queryCheck);
-			if(mysqli_num_rows($runCheck) ==0 ){
+			if(mysqli_num_rows($runCheck) == 0){
 				if(mysqli_query($connection, $queryAdd)){ 
 				    echo "<script>alert('Success, attendance was taken for today!');</script>";
 					echo "<script>window.location.assign('attendance.php'); </script>"; 

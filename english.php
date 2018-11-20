@@ -17,8 +17,9 @@
 		echo "<tr>";
 		echo "<td><b>Students</b></td>";
 		while($row = mysqli_fetch_assoc($resultAssignment)){
-			echo"<td><b>{$row['assignment_name']}</b></td>";
+			echo "<td><b>{$row['assignment_name']}</b></td>";
 		}
+		echo "<td><div contenteditable='true' placeholder='Add Assignment Name'></div></td>";
 		echo "</tr>";
 
 		//this fills the table with the student information and grades
@@ -41,6 +42,7 @@
 
 		        // close previous <tr>
 		        if ( $last_stud !== null ) {
+		        	echo "<td><div contenteditable='true' placeholder='".$last_stud."' data-toggle='tooltip' data-placement='left' title='Enter Grades Here'></div></td>";
 		            echo '</tr>';
 		        }
 
@@ -51,6 +53,7 @@
 		        echo"<td>{$row2['grade']}</td>";
 		    }
 		}
+		echo "<td><div contenteditable='true' placeholder='".$last_stud."'></div></td>";
 		echo '</tr>';
 
 	?>

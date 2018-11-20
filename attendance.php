@@ -41,7 +41,7 @@
     <button class="navButton" onclick="window.location.href='absences.php'">Take Attendance</button>
     <!-- Trigger the modal with a button -->
 	<button type="button" class="navButton" data-toggle="modal" data-target="#myModal">Remove Absence</button>
-	<button type="button" class="navButton" data-toggle="modal" data-target="#singleAddModal">Add Single Past Absence</button>
+	<button type="button" class="navButton" data-toggle="modal" data-target="#singleAddModal">Add Single Absence</button>
 
 
 
