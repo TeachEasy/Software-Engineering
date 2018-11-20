@@ -181,7 +181,7 @@
 									echo "<script>window.location.assign('attendance.php'); </script>"; 
 								}  
 								else{ 
-								    echo "<script>alert('The record already exists, or was entered improperly. Only enter numbers in the boxes.');</script>";
+								    echo "<script>alert('The was entered improperly. Only enter numbers in the boxes.');</script>";
 								}
 							} else{
 								echo "<script>alert('The record already exists.');</script>";
