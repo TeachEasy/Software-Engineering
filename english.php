@@ -37,13 +37,14 @@
 
 		$last_stud = null;
 
+		//add code to number the id for each contenteditable, use https://www.reddit.com/r/webdev/comments/4ga0ug/how_to_save_and_retrieve_contenteditable_data/ to figure out how to get the data from the contenteditables
 		while($row2 = mysqli_fetch_assoc($result)){
 		    if($last_stud != $row2['Student Name']){
 
 		        // close previous <tr>
 		        if ( $last_stud !== null ) {
 		        	echo "<td><div contenteditable='true' placeholder='".$last_stud."' data-toggle='tooltip' data-placement='left' title='Enter Grades Here'></div></td>";
-		            echo '</tr>';
+		            echo "</tr>";
 		        }
 
 		        $last_stud = $row2['Student Name'];
