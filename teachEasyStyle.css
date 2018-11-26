@@ -185,3 +185,22 @@ option {
 	display:flex;
 	justify-content:space-between;
 }
+
+/* this came from https://codepen.io/flesler/pen/AEIFc and helps get the placeholder text for the contenteditable section in the adding of a grade column*/
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
+
+
+div[contenteditable=true] {
+  border: 1px dashed #AAA;
+  width: 150px;
+  padding: 5px;
+}
+
+pre {
+  background:#EEE;
+  padding:5px;
+  width: 290px;
+}
