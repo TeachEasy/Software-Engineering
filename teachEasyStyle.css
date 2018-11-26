@@ -23,14 +23,15 @@ hr{
 
 table{
 	border: none;
+	margin-left:auto;
+	margin-right:auto;
 }
 tr{
 	border-bottom: 1px solid;
 }
 
 td{
-	padding-left: 15px;
-	padding-bottom: 5px;
+	padding:15px;
 	text-align: left;
 }
 
@@ -173,4 +174,14 @@ body{
 
 option {
 	background-color:rgb(144,182,68);
+}
+
+#attendance_main{
+	padding:20px;
+}
+
+#attendance_selection{
+	padding-bottom:50px;
+	display:flex;
+	justify-content:space-between;
 }
