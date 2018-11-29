@@ -19,6 +19,7 @@
 		while($row = mysqli_fetch_assoc($resultAssignment)){
 			echo"<td><b>{$row['assignment_name']}</b></td>";
 		}
+		echo "<td><div  id='newAssignmentName' contenteditable='true' placeholder='Add Assignment Name'></div></td>";
 		echo "</tr>";
 
 		//this fills the table with the student information and grades
@@ -35,11 +36,14 @@
 
 		$last_stud = null;
 
+		//add code to number the id for each contenteditable, use https://www.reddit.com/r/webdev/comments/4ga0ug/how_to_save_and_retrieve_contenteditable_data/ to figure out how to get the data from the contenteditables
+		$counter = 0;
 		while($row2 = mysqli_fetch_assoc($result)){
 		    if($last_stud != $row2['Student Name']){
 
 		        // close previous <tr>
 		        if ( $last_stud !== null ) {
+		        	echo "<td><div id='enter".$counter."' contenteditable='true' placeholder='".$last_stud."' data-toggle='tooltip' data-placement='left' title='Enter Grades Here'></div></td>";
 		            echo '</tr>';
 		        }
 
@@ -50,7 +54,9 @@
 		        echo"<td>{$row2['grade']}</td>";
 		    }
 		}
+		echo "<td><div id='enter".$counter."' contenteditable='true' placeholder='".$last_stud."'></div></td>";
 		echo '</tr>';
+		echo "<button class='navButton' id='submitNewAssignment' style='float:right'>Submit New Assignment</button>";
 	?>
 
 	</body>

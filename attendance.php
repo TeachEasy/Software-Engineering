@@ -131,7 +131,7 @@
 		    <div class="modal-content">
 		      	<div class="modal-header">
 		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
-		        	<h4 class="modal-title">Add Past Absence</h4>
+		        	<h4 class="modal-title">Add Single Absence</h4>
 		      	</div>
 		      	<div class="modal-body">
 			        <form id="insert_formAdd" method="post">
@@ -176,6 +176,10 @@
 
 						} else if(isset($studentIDadd) && isset($yearAdd) && isset($monthAdd) && isset($dayAdd)){
 							$queryCheck = "SELECT student_id, date_absence FROM `absences` WHERE student_id='". $studentIDadd."' AND date_absence='".$dateAdd."'";
+							/*
+								TO-DO:
+									THERE NEEDS TO BE A SAFEGUARD ADDED FOR THE ADDED ABSENCE TO ONLY BE FOR THAT LOGGED IN TEACHER
+							*/
 							$queryAdd = "INSERT INTO `absences` (`student_id`, `date_absence`) VALUES ('".$studentIDadd."','".$dateAdd."');";
 							$runCheck = mysqli_query($connection, $queryCheck);
 							if(mysqli_num_rows($runCheck) ==0 ){
