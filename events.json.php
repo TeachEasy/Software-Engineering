@@ -2,7 +2,7 @@
 	"success": 1,
 	"result": [
 		{
-			"id": "1",
+			"id": 1,
 			"title": "Geometry",
 			"class": "event-warning", 
 			"url": "lessonPlans.php", 
@@ -108,7 +108,7 @@
 		{
 			"id": "14",
 			"title": "Daylight",
-			"url": "http://eelslap.com/",
+			"url": "lessonPlans2.php",
 			"class": "event-success",
 			"start": "1542718800000",
 			"end":   "1542740400000"
