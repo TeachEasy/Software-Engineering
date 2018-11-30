@@ -18,14 +18,7 @@
 	//connect to the database
 	$connection = new mysqli($servername, $usernameDB, $passwordDB, $nameDB);
 
-    $car= 2;
-	
-	if(isset($_POST['id1'])){
-    $a= $_POST['id1'];
-	echo $a;
-
-    // Do whatever you want with the $uid
-
+ 
 		
 	
 
@@ -38,7 +31,7 @@
 
 
 	//Create lesson plan based on lesson plan id
-	$sql = "SELECT *From lesson_plans WHERE lesson_plan_id = '" . $a . "'";
+	$sql = "SELECT *From lesson_plans WHERE lesson_plan_id = 14";
 
 
 	$result = mysqli_query($connection, $sql) or die("Bad Query: $sql"); 
@@ -51,7 +44,7 @@
 		<br><br> <b>Notes:</b> {$row['notes']} <br>";
 	
 	}
-	}
+	
 	
 
     ?>
