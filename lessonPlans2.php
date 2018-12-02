@@ -38,10 +38,16 @@
 	
 	//displays the lesson plan
 	while($row = mysqli_fetch_assoc($result)){
-		echo"<b>Title:</b>  {$row['lesson_plan_title']} <br><br> <b>Date:</b> {$row['date_executed']} <br><br> <b>Objectives:</b> {$row['objectives']}
-		<br><br> <b>Information:</b> {$row['information']} <br><br> <b>Procedure:</b> {$row['procedure']} <br><br> <b>Student Instructions:</b> 
-		{$row['student_instructions']} <br><br> <b>Resources:</b> {$row['resources']} <br><br> <b>State Standards:</b> {$row['state_standards']}
-		<br><br> <b>Notes:</b> {$row['notes']} <br>";
+		echo"
+			<b>Title:</b>  {$row['lesson_plan_title']} <br><br> 
+			<b>Date:</b> {$row['date_executed']} <br><br> 
+			<b>Objectives:</b> {$row['objectives']} <br><br> 
+			<b>Information:</b> {$row['information']} <br><br> 
+			<b>Procedure:</b> {$row['procedure']} <br><br> 
+			<b>Student Instructions:</b> {$row['student_instructions']} <br><br> 
+			<b>Resources:</b> {$row['resources']} <br><br> 
+			<b>State Standards:</b> {$row['state_standards']} <br><br> 
+			<b>Notes:</b> {$row['notes']} <br>";
 	
 	}
 	
