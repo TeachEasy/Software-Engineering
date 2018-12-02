@@ -5,6 +5,7 @@
 	$usernameDB = "root";
 	$passwordDB = "";
 	$nameDB = "teacheasy";
+
 	//connect to the database
 	$connection = new mysqli($servername, $usernameDB, $passwordDB, $nameDB);
 
@@ -27,8 +28,8 @@
 		echo"<tr><td><input type='checkbox' name='students[]' value='{$row['student_id']}'>{$row['StudentName']}</td></tr>";
 	
 	}
-	echo "</table>";
-	echo "<button type='submit' name='submitAbsences' class='navButton'>Submit Absences</button>";
+	echo "</table><br><br>";
+	echo "<button type='submit' name='submitAbsences' class='navButtonAbsences'>Submit Absences</button>";
 	echo "</form>";
 
 	if(isset($_POST['submitAbsences'])){
@@ -57,4 +58,4 @@
 		}
 	}
 ?>
-<button class="navButton" onclick="window.location.href='attendance.php'">Check Absences</button>
+<button class="navButtonAbsences" onclick="window.location.href='attendance.php'">Check Absences</button>
