@@ -524,3 +524,7 @@ a.cal-event-week {
 .badge-important {
   background-color: #b94a48;
 }
+
+body{
+  padding-bottom: 75px;
+}
