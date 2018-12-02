@@ -40,6 +40,10 @@ td{
 	text-align: right;
 }
 
+.centerColumn{
+	text-align: left;
+	font-size: 17px
+}
 .rightColumn{
 
 }
